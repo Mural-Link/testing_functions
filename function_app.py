@@ -63,7 +63,7 @@ def http_trigger_1(req: func.HttpRequest) -> func.HttpResponse:
         image_data = req.get_body()
         
         # Call the Image Processing Function
-        processing_function_url = "YOUR_IMAGE_PROCESSING_FUNCTION_URL"
+        processing_function_url = "https://image-segment-app.azurewebsites.net/api/image_segment?code=i8v1QIf4WAXuIOlIN7DAObZEjHBLdAsFZOUNY4Kmz6IqAzFu2mnfow%3D%3D"
         response = requests.post(processing_function_url, data=image_data, 
                                  headers={'Content-Type': 'application/octet-stream'})
         
@@ -101,23 +101,3 @@ def http_trigger_1(req: func.HttpRequest) -> func.HttpResponse:
             f"An error occurred: {str(e)}",
             status_code=500
         )
-# @app.route(route="http_trigger_1")
-# def http_trigger_1(req: func.HttpRequest) -> func.HttpResponse:
-#     logging.info('Python HTTP trigger function processed a request.')
-
-#     name = req.params.get('name')
-#     if not name:
-#         try:
-#             req_body = req.get_json()
-#         except ValueError:
-#             pass
-#         else:
-#             name = req_body.get('name')
-
-#     if name:
-#         return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.")
-#     else:
-#         return func.HttpResponse(
-#              "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
-#              status_code=200
-#         )
